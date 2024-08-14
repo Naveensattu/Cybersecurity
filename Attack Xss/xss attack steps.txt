@@ -1,0 +1,10 @@
+XSS attack - 
+1. Open application
+2. Get the URL and modify the URL with injection.
+3. Load the URL and see if it works are use burpsuite and use Foxy poxy of burpsuite and load the page.
+4. It should be captured in the burpsuite, open Burp and right click and send it to intruder > select full text and left side Clear $ > select only Get request = and left side Add $ 
+5. Go to payloads, click on load and select the file for injection. > sniper and start attack.
+6. Select any of the success and copy paste the URL in notes and modify the after = and </script> your website and go to decoder in burpsuite and copy paste after = code and select URL and decode it
+7. Kali Linux open terminal > python3 -m http.server
+8. Load the server with URL - you should get the session ID
+9. open the application in new tab and open developer tools and add all the cookies gained. > next in URL change ip and /index.php and load.
