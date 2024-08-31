@@ -1,0 +1,103 @@
+Ports
+0-1023 wellknown 
+1024-49152 registered 
+49152-65535 dynamic
+
+Public IP address - Internet exposed services ( DNS, Application server, SMTP server )
+Private IP address - Intranet networking
+
+IPv4 Address - 0.0.0.0 - 255.255.255.255
+types of IPv4 - Class A ( 1.0.0.0 - 126.0.0.0 ) - Large networks
+                         Class B ( 128.0.0.0 - 191.255.0.0 ) - Medium networks 
+                         Class C ( 192.0.0.0 - 239.255.255.255 ) - Small networks
+                         Class D ( 224.0.0.0 - 239.255.255.255 ) - Multicasting services
+                         Class E ( 240.0.0.0 - 255.255.255.255 ) - Experimental purpose
+Private IPv4 address - 10.0.0.0 - 10.255.255.255
+                                     172.16.0.0 - 172.31.255.255
+                                     192.168.0.0 - 192.168.255.255
+       127.0.0.0 - 127.255.255.255 - Loop back 
+
+
+Physical address = MAC address
+
+IPv6 - hexa decimal ( 8 groups )
+IPsec encryption is mandatory to IPv6
+Types - fc00:    :fd00 ( start and ends ) - private IPv6
+
+NAT - network address translation ( to make private ip reach to internet taking advantage of public )
+DHCP - dynamic host configuration protocol ( allocates IP to the system connected )
+
+
+Nmap - Network mapper ( Information gathering )
+Using Nmap we can identify - host discovery
+                                                  port scanning
+                                                  OS detection
+                                                  Service version identification
+
+Handshake - sync synck acknowledgment
+
+Commands to check with Nmap                               - ( scanme nmap - for testing )
+nmap -p 1-1023 <ipaddress/domain/text file>        - shows the ports that are open, closed and filtered
+nmap -p 1-1023 -sV <ipaddress/domain>                - to show the ports that are open closed and filtered with the services running on top of port with version- 
+searchsploit openssh <version>                               - to check the ecploit options
+nmap -p http,https,ssh <ipaddress/domain>          - other way to check with the name of port
+nmap -p 22,443 <ipaddress/domain>                      - other way
+nmap -sP -v <set of ip/172.31.5.0-255>                    - to check in other way (main) -v is verbose to see in detail
+nmap -sn <set of ip/172.31.5.0-255>                        - to check the ping scan
+nmap -PR -sn <ip>                                                      - to scan how many ip's are running 
+nmap -PE -sn scanme.nmap.org                                - to  scan and know ip and ipv6 of the host aswell ( layer 3 sending icmp packets )                                       (tcpdump -i eth0 host <sourceip>     - to check whats happening)
+nmap -PA80 -sn scanme.nmap.org                            - to scan and know ip and ipv6 ( layer 4 sending acknowledgement packets ) on port 80
+nmap -iL <iplist.txt>                                                    - to scan all the ip's mentioned in file and show all open pen ports on host
+nmap -sA -iL <iplist.txt>                                             - to scan and see if any filtered ports are there ( filtered is accessible butnot open ) ack scan
+nmap -sU -iL <iplist.txt>                                             - to scan UDP port
+nmap -sV -iL iplist.txt                                                 - to scan version of the service running on port
+nmap -O -iL iplist.txt                                                  - to scan OS of service running
+nmap scanme.nmap.org -T5                                      - to scan fast
+nmap <ipaddress> -D RND:20                                    - to give scan from 20 source ips to destination ip to avoid detection
+nmap <ip> --spoof-mac 0                                            - scan with different mac address
+nmap <ip> -f                                                                - scan with fragmented ip
+nmap -p 1-1023 -sS scanme.nmap.org                       - using syn stealth mode  to scan (syn scan)
+nmap -p 1-1023 -sT scanme.nmap.org                       - using tcp connect method scan 
+nmap -p 53 -sU scanme.nmap.org                             - using scan UDP ports
+
+
+
+
+Active Directory : authentication, authorization & accountability
+
+Bring up Windows server os 2022 or any
+Go to server manager
+Top right manage > and go with installation of AD
+Top right next to manage open flag and promote to domain controller (with domain name)
+
+To add new user - go to server manager >  tools on right top
+Add user and AD
+Under users - left click and new user (create user with details)
+After adding right click on user got to properties > select groups > go to advanced > add to group
+Open group policy management from windows search > go to domains find ours > right click default policy > create new policy (with details) - if you want t o edit again right click on the policyand edit.
+In policies - ecpand & select advanced audit policy configurations and can see multiple things to monitor
+Open run from windows search bar and open eventvwr.msc and can find windows logs 
+
+LDAP - Lightweight Directory access protocol ( is a protocol to login to applications using SSO with AD )
+
+Intrusion detection system - IDS
+Intrusion prevention system - ips
+
+Enabling RDP in Windows.
+
+settings > system > remote desktop (enable) - in the user accounts (select users that can RDP to machine)
+Open windows defender firewall > advanced security > inbound rules - Remote desktop_user mode (right click and enable) - now can RDP to this derver from other host
+If want to allow only particular IP's - right click on Remote Desktop_ user mode > properties > enable connection and go to scope settings > add ip's 
+
+
+
+
+
+
+
+
+
+
+
+
+
